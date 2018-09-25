@@ -92,6 +92,15 @@ module.exports = {
     }
 
     return res.status(404).json({rooms});
+  },
+
+  async autoAddFriend(first_user, second_user){
+    //add friend for both user
+    await bothAddFriend(first_user, second_user);
+    await bothAddFriend(second_user, first_user);
+    // res.json(await bothAddFriend(req.params.user_id, req.params.friend_id));
+    //create chat room for both user
+    createRoom(first_user, second_user);
   }
 }
 

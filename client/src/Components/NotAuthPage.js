@@ -12,7 +12,7 @@ const NotAuthPage = (props) => {
     <div>
       <Route path='/' exact component={LoginForm}></Route>
       <Route path='/signup' exact component={SignUp}></Route>
-
+      <Route path="*" component={LoginForm}></Route>
     </div>
   )
 }

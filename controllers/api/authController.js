@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../../models/User');
 const keys = require('../../config/keys');
+const friendListController = require('./friendListController');
 
 module.exports = {
   async postSignup(req, res, next){
@@ -10,7 +11,9 @@ module.exports = {
     newUser.password = newUser.generateHash(req.body.password);
     newUser.username = req.body.username;
     newUser.tel = req.body.tel;
-    let success = await newUser.save();
+    let user = await newUser.save();
+    let admin = await User.findOne({email: 'ntduong28597@gmail.com'});
+    friendListController.autoAddFriend(user._id, admin._id);
     return res.status(200).json({
       message: false
     })
