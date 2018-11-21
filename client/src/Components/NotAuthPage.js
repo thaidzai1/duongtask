@@ -10,9 +10,8 @@ const NotAuthPage = (props) => {
   console.log(props);
   return (
     <div>
-      <Route path='/' exact component={LoginForm}></Route>
       <Route path='/signup' exact component={SignUp}></Route>
-      <Route path="*" component={LoginForm}></Route>
+      <Route path='/' exact component={LoginForm}></Route>
     </div>
   )
 }
